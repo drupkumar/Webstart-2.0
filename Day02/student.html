@@ -1,52 +1,32 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Seshadripuram College</title>
+  <title>Seshadripuram College</title>
 </head>
-<body style="font-family: Arial, sans-serif; background-color: #f2f2f2; padding: 20px;">
-
-    <!-- Header -->
-    <h1 style="text-align: center; color: #004080;">Seshadripuram College</h1>
-
-    <!-- College Description -->
-    <div style="text-align: center; margin-bottom: 20px;">
-        <img src="index.webp" alt="College Logo" style="width: 150px;"><br>
-        <p style="max-width: 700px; margin: auto; font-size: 16px;">
-            Seshadripuram College is one of the most prestigious institutions offering quality education in various disciplines. 
-            Established with the vision to empower students through knowledge and skills, the college boasts modern infrastructure, 
-            experienced faculty, and a student-friendly environment.
-        </p>
-        <p><a href="https://www.spmcollege.ac.in" target="_blank">Visit Our Website</a></p>
-    </div>
-
-    <!-- Form Section -->
-    <form style="background-color: #ffffff; padding: 20px; border-radius: 8px; max-width: 600px; margin: auto; box-shadow: 0 0 10px rgba(0,0,0,0.1);">
-        <h2 style="text-align: center; color: #333;">Student Interest Form</h2>
-
-        <!-- Radio Buttons -->
-        <p>Are you a current student?</p>
-        <input type="radio" name="student" value="yes"> Yes 
-        <input type="radio" name="student" value="no"> No
-
-        <!-- Checkbox -->
-        <p>Select areas of interest:</p>
-        <input type="checkbox" name="interest" value="science"> Science<br>
-        <input type="checkbox" name="interest" value="commerce"> Commerce<br>
-        <input type="checkbox" name="interest" value="arts"> Arts<br>
-
-        <!-- Dropdown -->
-        <p>Choose your preferred course:</p>
-        <select name="course">
-            <option value="bcom">B.Com</option>
-            <option value="bsc">BCA</option>
-            <option value="ba">BBA</option>
-        </select>
-
-        <!-- Submit Button -->
-        <br><br>
-        <button name="submit" type="submit" value="Submit">submit</button>
-        <button name="reset" type="reset" value="reset">reset</button>
-      </form>
-
+<body>
+<h1>Seshadripuram College</h1>
+<p>Seshadripuram College is one of the well-known educational institutions in Bengaluru. It offers a variety of undergraduate and postgraduate courses. The college has a good academic environment and modern infrastructure.
+</p>
+<a href="https://www.spmcollege.ac.in/" target="_blank">
+<img src="index.webp" alt="Seshadripuram College Logo" width="150"></a>
+<h2>Student Interest Form</h2>
+<form>
+<p><strong>Select your Gender:</strong></p>
+<input type="radio" name="gender" value="male"> Male<br>
+<input type="radio" name="gender" value="female"> Female<br>
+<input type="radio" name="gender" value="other"> Other<br><br>
+<p><strong>Courses you are interested in:</strong></p>
+<input type="checkbox" name="course" value="bcom"> B.Com<br>
+<input type="checkbox" name="course" value="bca"> BCA<br>
+<input type="checkbox" name="course" value="bba"> BBA<br><br>
+<p><strong>Select your Year of Study:</strong></p>
+<select name="year">
+<option value="1st">1st Year</option>
+<option value="2nd">2nd Year</option>
+<option value="3rd">3rd Year</option>
+</select><br><br>
+<input type="submit" value="Submit">
+<input type="reset" value="reset">
+</form>
 </body>
 </html>
