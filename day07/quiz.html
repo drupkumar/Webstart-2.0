@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Quiz</title>
+</head>
+<body>
+    <link rel="stylesheet" href="quiz.css">
+    <div class="quiz-container">
+        <h1>Simple Quiz</h1>
+        
+        <div id="quiz">
+            <div class="question" id="question"></div>
+            <div class="answers" id="answers"></div>
+            <button onclick="submitAnswer()">Submit</button>
+            <div id="feedback"></div>
+        </div>
+
+        <div id="result" style="display: none;">
+            <div class="score" id="finalScore"></div>
+            <button onclick="restartQuiz()">Start Again</button>
+        </div>
+    </div>
+
+    <script>
+        // Quiz questions
+        var questions = [
+            {
+                question: "What is 2 + 2?",
+                answers: ["3", "4", "5", "6"],
+                correct: 1
+            },
+            {
+                question: "What color do you get when you mix red and blue?",
+                answers: ["Green", "Purple", "Orange", "Yellow"],
+                correct: 1
+            },
+            {
+                question: "How many days are in a week?",
+                answers: ["5", "6", "7", "8"],
+                correct: 2
+            }
+        ];
+
+        var currentQuestion = 0;
+        var score = 0;
+
+        function startQuiz() {
+            showQuestion();
+        }
+
+        function showQuestion() {
+            var question = questions[currentQuestion];
+            
+            document.getElementById("question").innerHTML = question.question;
+            
+            var answersHTML = "";
+            for (var i = 0; i < question.answers.length; i++) {
+                answersHTML += '<div class="answer">';
+                answersHTML += '<input type="radio" name="answer" value="' + i + '" id="answer' + i + '">';
+                answersHTML += '<label for="answer' + i + '"> ' + question.answers[i] + '</label>';
+                answersHTML += '</div>';
+            }
+            document.getElementById("answers").innerHTML = answersHTML;
+            
+            document.getElementById("feedback").innerHTML = "";
+        }
+
+        function submitAnswer() {
+            // Get selected answer
+            var selectedAnswer = document.querySelector('input[name="answer"]:checked');
+            
+            if (!selectedAnswer) {
+                alert("Please select an answer!");
+                return;
+            }
+            
+            var userAnswer = parseInt(selectedAnswer.value);
+            var correctAnswer = questions[currentQuestion].correct;
+            
+            // Show feedback
+            var feedback = document.getElementById("feedback");
+            if (userAnswer === correctAnswer) {
+                feedback.innerHTML = "Correct!";
+                feedback.className = "feedback correct";
+                score++;
+            } else {
+                feedback.innerHTML = "Wrong! The correct answer is: " + questions[currentQuestion].answers[correctAnswer];
+                feedback.className = "feedback wrong";
+            }
+            
+            // Move to next question after 2 seconds
+            setTimeout(function() {
+                currentQuestion++;
+                if (currentQuestion < questions.length) {
+                    showQuestion();
+                } else {
+                    showResult();
+                }
+            }, 2000);
+        }
+
+        // Show final result
+        function showResult() {
+            document.getElementById("quiz").style.display = "none";
+            document.getElementById("result").style.display = "block";
+            
+            document.getElementById("finalScore").innerHTML = 
+                "Your Score: " + score + " out of " + questions.length;
+        }
+
+        // Restart quiz
+        function restartQuiz() {
+            currentQuestion = 0;
+            score = 0;
+            document.getElementById("quiz").style.display = "block";
+            document.getElementById("result").style.display = "none";
+            startQuiz();
+        }
+
+        // Start the quiz when page loads
+        startQuiz();
+    </script>
+</body>
+</html>
